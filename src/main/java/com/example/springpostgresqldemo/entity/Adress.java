@@ -28,10 +28,13 @@ public class Adress implements Serializable {
     @Column (name = "adress_type",nullable = true)
     private AdressType adressType;
 
+    @Column(name = "active")
+    private boolean active;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "adress_id")
     private Users user;
-    enum AdressType {
+    public enum AdressType {
         Home_Adress,
         Business_Adress,
         Other

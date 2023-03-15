@@ -29,9 +29,6 @@ public class Users {
     @Column(name = "phone_number" )
     private int number;
 
-    @Column(name = "active")
-    private boolean active;
-
     @OneToMany
     @JoinColumn(name = "adress_id")
     private List<Adress> adresses ;

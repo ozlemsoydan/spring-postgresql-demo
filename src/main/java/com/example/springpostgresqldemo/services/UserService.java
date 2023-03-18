@@ -5,19 +5,21 @@ import com.example.springpostgresqldemo.entity.Adress;
 import com.example.springpostgresqldemo.entity.Users;
 import com.example.springpostgresqldemo.repository.IAddressRepository;
 import com.example.springpostgresqldemo.repository.IUserRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 public class UserService implements IUserService {
 
+    @Autowired
     private IUserRepository userRepository;
+    @Autowired
     private IAddressRepository addressRepository;
 
 
@@ -45,7 +47,8 @@ public class UserService implements IUserService {
 
     @Override
     public void delete(Long id) {
-
+        Optional<Users> user = userRepository.findById(id);
+        userRepository.deleteById(id);
     }
 
     @Override
@@ -67,7 +70,11 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Page<UserDto> userDto(Pageable pageable) {
-        return null;
+    public UserDto update(UserDto userDto) {
+        Optional<Users> user= userRepository.findById(userDto.getId());
+        if (user.isPresent()) {
+            userRepository.save(user.get());
+        }
+        return userDto;
     }
 }

@@ -12,5 +12,5 @@ public interface IUserService {
     UserDto save(UserDto userDto);
     void delete(Long id);
     List <UserDto> getAll();
-    Page<UserDto> userDto (Pageable pageable);
+    UserDto update(UserDto userDto);
 }

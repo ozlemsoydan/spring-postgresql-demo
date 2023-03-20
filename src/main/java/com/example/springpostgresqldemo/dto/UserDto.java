@@ -12,6 +12,6 @@ public class UserDto {
     private String userName;
     private String surname;
     private int number;
-    private List<String> addressList;
+    private List<String> address;
 
 }

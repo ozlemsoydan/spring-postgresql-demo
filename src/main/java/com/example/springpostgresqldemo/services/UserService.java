@@ -32,7 +32,7 @@ public class UserService implements IUserService {
         Users userDb = userRepository.save(user);
 
         List<Adress> adressList = new ArrayList<>();
-        userDto.getAddressList().forEach(item -> {
+        userDto.getAddress().forEach(item -> {
             Adress adress = new Adress();
             adress.setAdress(item);
 //            adress.setAdressType();
@@ -61,7 +61,7 @@ public class UserService implements IUserService {
             userDto.setUserName(item.getUserName());
             userDto.setSurname(item.getSurname());
             userDto.setId(item.getId());
-            userDto.setAddressList(item.getAdresses().stream().map(Adress::getAdress).collect(Collectors.toList()));
+            userDto.setAddress(item.getAdresses().stream().map(Adress::getAdress).collect(Collectors.toList()));
 
             userDtos.add(userDto);
         });

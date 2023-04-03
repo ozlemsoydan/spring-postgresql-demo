@@ -1,11 +1,9 @@
 package com.example.springpostgresqldemo.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -28,6 +26,9 @@ public class Users {
 
     @Column(name = "phone_number" )
     private int number;
+
+    @Column(name = "create_date")
+    private Date createDate;
 
     @OneToMany
     @JoinColumn(name = "adress_id")
